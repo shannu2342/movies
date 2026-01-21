@@ -4,22 +4,6 @@ import { authMiddleware, adminMiddleware } from '../middleware/authMiddleware.js
 
 const router = express.Router();
 
-router.get('/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        const movie = await Movie.findById(id);
-
-        if (!movie) {
-            return res.status(404).json({ message: 'Movie not found' });
-        }
-
-        res.json(movie);
-    } catch (error) {
-        console.error('Get movie error:', error);
-        res.status(500).json({ message: 'Server error' });
-    }
-});
-
 router.get('/', async (req, res) => {
     try {
         const page = parseInt(req.query.page) || 1;
@@ -120,6 +104,22 @@ router.get('/sorted', async (req, res) => {
         });
     } catch (error) {
         console.error('Sorted movies error:', error);
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+router.get('/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const movie = await Movie.findById(id);
+
+        if (!movie) {
+            return res.status(404).json({ message: 'Movie not found' });
+        }
+
+        res.json(movie);
+    } catch (error) {
+        console.error('Get movie error:', error);
         res.status(500).json({ message: 'Server error' });
     }
 });

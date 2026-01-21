@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 import Home from './pages/Home';
 import Search from './pages/Search';
 import AddMovie from './pages/AddMovie';
@@ -27,6 +28,7 @@ function App() {
     return (
         <Routes>
             <Route path="/login" element={user ? <Navigate to="/" replace /> : <Login />} />
+            <Route path="/signup" element={user ? <Navigate to="/" replace /> : <Signup />} />
 
             <Route path="/" element={
                 <ProtectedRoute>

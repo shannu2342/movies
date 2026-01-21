@@ -41,8 +41,33 @@ export const AuthProvider = ({ children }) => {
     };
 
     const login = async (email, password) => {
+        console.log('Login function called with:', email, password);
         try {
             const response = await axios.post(`${API_BASE_URL}/auth/login`, {
+                email,
+                password,
+            });
+
+            console.log('Login response:', response);
+            const { token, user } = response.data;
+            localStorage.setItem('token', token);
+            axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            setUser(user);
+
+            return { success: true };
+        } catch (error) {
+            console.error('Login error:', error);
+            return {
+                success: false,
+                message: error.response?.data?.message || 'Login failed',
+            };
+        }
+    };
+
+    const signup = async (name, email, password) => {
+        try {
+            const response = await axios.post(`${API_BASE_URL}/auth/register`, {
+                name,
                 email,
                 password,
             });
@@ -54,9 +79,10 @@ export const AuthProvider = ({ children }) => {
 
             return { success: true };
         } catch (error) {
+            console.error('Signup error:', error);
             return {
                 success: false,
-                message: error.response?.data?.message || 'Login failed',
+                message: error.response?.data?.message || 'Signup failed',
             };
         }
     };
@@ -75,6 +101,7 @@ export const AuthProvider = ({ children }) => {
         user,
         loading,
         login,
+        signup,
         logout,
         isAdmin,
     };
