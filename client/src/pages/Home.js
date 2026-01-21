@@ -54,6 +54,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchMovies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page, sortBy, searchQuery]);
 
     const fetchMovies = async () => {

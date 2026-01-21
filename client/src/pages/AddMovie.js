@@ -56,7 +56,7 @@ const AddMovie = () => {
     const [isEditMode, setIsEditMode] = useState(false);
 
     const { id } = useParams();
-    const { user, logout, isAdmin } = useAuth();
+    const { user, logout } = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -64,6 +64,7 @@ const AddMovie = () => {
             setIsEditMode(true);
             fetchMovie();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [id]);
 
     const fetchMovie = async () => {

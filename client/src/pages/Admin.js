@@ -9,7 +9,6 @@ import {
     CardContent,
     CardActions,
     Button,
-    TextField,
     Pagination,
     CircularProgress,
     Alert,
@@ -53,11 +52,12 @@ const Admin = () => {
     const [movieToDelete, setMovieToDelete] = useState(null);
     const [successMessage, setSuccessMessage] = useState('');
 
-    const { user, logout, isAdmin } = useAuth();
+    const { user, logout } = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
         fetchMovies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page]);
 
     const fetchMovies = async () => {
