@@ -35,6 +35,8 @@ A modern movie management application built with the MERN stack (MongoDB, Expres
 - **Sort**: Sort movies by rating, title, release date, or duration
 - **Pagination**: Load movies in batches of 10
 - **Responsive Design**: Works on desktop and mobile devices
+- **User Registration**: New users can sign up with email and password (limited to user role)
+- **User Login**: Existing users can login with their credentials
 
 ### Admin Features
 - **Add Movies**: Create new movie entries with detailed information
@@ -166,8 +168,8 @@ Processes movie data insertion in the background using Bull queue. This prevents
 
 ## Live URLs
 
-- **Frontend**: [https://movie-app-client.vercel.app](https://movie-app-client.vercel.app)
-- **Backend**: [https://movie-app-server.onrender.com](https://movie-app-server.onrender.com)
+- **Frontend**: [https://movies-app-delta-jade.vercel.app](https://movies-app-delta-jade.vercel.app)
+- **Backend**: [https://movies-gv4l.onrender.com](https://movies-gv4l.onrender.com)
 
 ## Code Quality
 
