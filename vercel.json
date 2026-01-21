@@ -1,0 +1,28 @@
+{
+    "name": "movie-app-client",
+    "version": 2,
+    "builds": [
+        {
+            "src": "client/package.json",
+            "use": "@vercel/static-build",
+            "config": {
+                "distDir": "build"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "https://movie-app-server.onrender.com/api/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "client/build"
+        }
+    ],
+    "env": {
+        "REACT_APP_API_URL": {
+            "required": true
+        }
+    }
+}
